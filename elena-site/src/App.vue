@@ -5,6 +5,7 @@ import { VueFlip } from 'vue-flip';
 <template>
   <full-page>
     <div class="fp-section">
+      <font-awesome-icon :icon="['fab', 'linkedin-in']" />
       <vue-flip active-click>
         <template v-slot:front>
           front
@@ -13,9 +14,12 @@ import { VueFlip } from 'vue-flip';
           back
         </template>
       </vue-flip>
-      <div></div>
+      <div>
+        test for font
+      </div>
     </div>
     <div class="fp-section">
+      <h1>Whereas disregard and contempt for human rights have resulted</h1>
     </div>
   </full-page>
 </template>
