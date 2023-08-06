@@ -5,6 +5,7 @@ import { VueFlip } from 'vue-flip';
 <template>
   <full-page>
     <div class="fp-section">
+      <font-awesome-icon :icon="['fab', 'linkedin-in']" />
       <vue-flip active-click>
         <template v-slot:front>
           front
