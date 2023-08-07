@@ -12,15 +12,15 @@ import { VueFlip } from 'vue-flip';
           <h2>Project Manager</h2>
         </div>
         <div class="flex">
-          <div class="icon">
+          <a href="mailto: elenaseeleyaz@gmail.com" class="icon">
             <font-awesome-icon icon="fa-solid fa-envelope" beat size="2xl" />
-          </div>
-          <div class="icon">
+          </a>
+          <a href="https://www.linkedin.com/in/elenaseeley/" class="icon" target="_blank" rel="noopener noreferrer">
             <font-awesome-icon icon="fa-brands fa-linkedin-in" beat size="2xl" />
-          </div>
-          <div class="icon">
+          </a>
+          <a href="https://twitter.com/elena_seeley" class="icon" target="_blank" rel="noopener noreferrer">
             <font-awesome-icon icon="fa-brands fa-twitter" beat size="2xl" />
-          </div>
+          </a>
         </div>
       </div>
     </div>
