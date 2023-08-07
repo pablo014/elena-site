@@ -4,37 +4,50 @@ import { VueFlip } from 'vue-flip';
 
 <template>
   <full-page>
-    <div class="fp-section">
-      <font-awesome-icon :icon="['fab', 'linkedin-in']" />
-      <vue-flip active-click>
-        <template v-slot:front>
-          front
-        </template>
-        <template v-slot:back>
-          back
-        </template>
-      </vue-flip>
-      <div>
-        test for font
+    <div class="fp-section front">
+      <div class="bg-gradient-to-b from-black to-green-900 absolute top-0 bottom-0 left-0 right-0 opacity-60 z-0"></div>
+      <div class="z-10 absolute top-40 bottom-10 sm:left-10 left-4 sm:right-10 right-4 flex flex-col justify-between">
+        <div>
+          <h1>Elena Seeley</h1>
+          <h2>Project Manager</h2>
+        </div>
+        <div class="flex">
+          <div class="icon">
+            <font-awesome-icon icon="fa-brands fa-instagram" beat size="2xl" />
+          </div>
+          <div class="icon">
+            <font-awesome-icon icon="fa-brands fa-google" beat size="2xl" />
+          </div>
+          <div class="icon">
+            <font-awesome-icon icon="fa-brands fa-linkedin-in" beat size="2xl" />
+          </div>
+          <div class="icon">
+            <font-awesome-icon icon="fa-brands fa-twitter" beat size="2xl" />
+          </div>
+        </div>
       </div>
     </div>
     <div class="fp-section">
-      <h1>Whereas disregard and contempt for human rights have resulted</h1>
+      <div class="bg-gradient-to-b from-black to-green-900 absolute top-0 bottom-0 left-0 right-0 opacity-60"></div>
+      <div class="z-10">test</div>
     </div>
   </full-page>
 </template>
 
 <style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+.front {
+  background-image: url("./assets/coffee.png");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+.icon {
+  @apply rounded-full cursor-pointer;
+  padding: 2rem;
+  margin: 1.5rem;
+  border: solid 2px black;
+  @media only screen and (max-width: 600px) {
+    padding: 1rem;
+    margin: .75rem;
+  }
 }
 </style>
