@@ -13,10 +13,7 @@ import { VueFlip } from 'vue-flip';
         </div>
         <div class="flex">
           <div class="icon">
-            <font-awesome-icon icon="fa-brands fa-instagram" beat size="2xl" />
-          </div>
-          <div class="icon">
-            <font-awesome-icon icon="fa-brands fa-google" beat size="2xl" />
+            <font-awesome-icon icon="fa-solid fa-envelope" beat size="2xl" />
           </div>
           <div class="icon">
             <font-awesome-icon icon="fa-brands fa-linkedin-in" beat size="2xl" />
@@ -43,11 +40,7 @@ import { VueFlip } from 'vue-flip';
 .icon {
   @apply rounded-full cursor-pointer;
   padding: 2rem;
-  margin: 1.5rem;
+  margin-right: 1.5rem;
   border: solid 2px black;
-  @media only screen and (max-width: 600px) {
-    padding: 1rem;
-    margin: .75rem;
-  }
 }
 </style>
