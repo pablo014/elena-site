@@ -6,6 +6,7 @@
   src: url('@/assets/fonts/AbrilFatface-Regular.ttf') format('truetype');
   line-height: 1.5;
   font-weight: 400;
+  font-size: 30px;
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
@@ -33,4 +34,9 @@ h2 {
   @media only screen and (max-width: 600px) {
     font-size: 40px;
   }
+}
+
+.fp-watermark {
+  visibility: hidden;
+  z-index: 0 !important;
 }
