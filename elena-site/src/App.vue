@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { VueFlip } from 'vue-flip';
+import Timeline from "./components/Timeline.vue";
 const options = {
-  licenseKey: 'YOUR_KEY_HERE',
       menu: '#menu',
       anchors: ['home', 'about_me'],
 };
@@ -53,7 +53,10 @@ const options = {
     </div>
     <div class="fp-section exp" data-anchor="exp">
       <div class="bg-gradient-to-b from-black to-green-900 absolute top-0 bottom-0 left-0 right-0 opacity-60 z-0"></div>
-      <div class="z-10 absolute top-40 bottom-10 sm:left-10 left-4 sm:right-10 right-4">Skills and Experience</div>
+      <div class="z-10 absolute top-40 bottom-10 sm:left-10 left-4 sm:right-10 right-4">
+          <h1>Skills and Experience</h1>
+          <Timeline :times="[{title: 'test', time: '2021'}, {title: 'test 2', time: '2022'}]" />
+      </div>
     </div>
   </full-page>
 </template>
