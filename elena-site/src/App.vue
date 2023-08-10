@@ -53,9 +53,24 @@ const options = {
     </div>
     <div class="fp-section exp" data-anchor="exp">
       <div class="bg-gradient-to-b from-black to-green-900 absolute top-0 bottom-0 left-0 right-0 opacity-60 z-0"></div>
-      <div class="z-10 absolute top-40 bottom-10 sm:left-10 left-4 sm:right-10 right-4">
+      <div class="z-10 absolute top-20 bottom-10 sm:left-10 left-4 sm:right-10 right-4">
           <h1>Skills and Experience</h1>
-          <Timeline :times="[{title: 'test', time: '2021'}, {title: 'test 2', time: '2022'}]" />
+          <div class="grid grid-cols-12">
+              <div class="col-span-4 flex flex-wrap gap-4">
+                  <img src="./assets/icons/asana.png" class="w-12 h-12" />
+                  <img src="./assets/icons/basecamp.png" class="w-12 h-12 rounded-full" />
+                  <img src="./assets/icons/canva.png" class="w-12 h-12" />
+                  <img src="./assets/icons/google.jpg" class="w-12 h-12 rounded-full" />
+                  <img src="./assets/icons/google-marketing.png" class="w-12 h-12 rounded-full" />
+                  <img src="./assets/icons/microsoft-suite.png" class="w-12 h-12 rounded-full" />
+                  <img src="./assets/icons/monday.png" class="w-12 h-12 rounded-full bg-gray-100" />
+                  <img src="./assets/icons/salesforce.jpg" class="w-12 h-12 rounded-full" />
+                  <img src="./assets/icons/slack.png" class="w-12 h-12 rounded-full" />
+
+              </div>
+              <div class="col-span-6"></div>
+              <Timeline class="col-span-2" :times="[{title: 'test', time: '2021'}, {title: 'test 2', time: '2022'}]" />
+          </div>
       </div>
     </div>
   </full-page>
