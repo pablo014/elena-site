@@ -1,10 +1,50 @@
 <script setup lang="ts">
+import { ref } from 'vue';
 import { VueFlip } from 'vue-flip';
-import Timeline from "./components/Timeline.vue";
+import Timeline, { Times } from "./components/Timeline.vue";
 const options = {
       menu: '#menu',
       anchors: ['home', 'about_me'],
 };
+const selected = ref(-1);
+const experience: Array<Array<string>> = [
+    [
+        'Served as the primary point of contact for B2B clients by managing communication and delivering on client objectives',
+        'Partnered closely with sales, media planning and lead delivery teams by collaborating cross-functionally to ensure alignment of objectives and the highest level of client service',
+        'Successfully managed client onboarding and campaign setup processes, ensuring smooth transitionsand optimal campaign performance, further solidifying client relationships through consistent communication and meticulous organization',
+      'Facilitated weekly/bi-weekly meetings with clients to provide updates on campaign pacing and optimization by building relationships based on transparency and regular communication',
+      'Prepared and presented post-campaign analysis reports, which provided clients with comprehensive insights and strategic recommendations for ongoing performance improvement'
+    ],
+  [
+    'Successfully executed multiple concurrent projects from initial client contact to final delivery while ensuring budget adherence and maintaining quality standards',
+    'Demonstrated exceptional leadership as the central liaison between clients and a diverse creative team by fostering clear communication and alignment on project objectives',
+    'Implemented regular project updates and weekly meetings while fostering open dialogue and enhancing client satisfaction',
+    'Showcased strong crisis management skills by promptly addressing and resolving project challenges'
+  ],
+  [
+    'Crafted and executed compelling press releases, newsletters, and media pitches, showcasing strong client relationship management skills',
+    'Adapted to client feedback to align project outputs with client expectations in order to provide client satisfaction',
+    'Conceptualized and designed engaging media kits and blog posts, demonstrating creative strategy skills and proficiency in enhancing client brand stories'
+  ]
+]
+const time: Array<Times> = [
+  {
+    title: 'Avani Media\n Client Success Coordinator',
+    time: 'July 2022 - May 2023'
+  },
+  {
+    title: 'Soapbox Agency\n Project Manager',
+    time: 'March 2021 - December 2021'
+  },
+  {
+    title: 'WallsPop Marketing & Communications Group\n PR & Content Strategist',
+    time: 'January 2020 - March 2022'
+  },
+]
+
+const onTimelineHover = (time: Times, index: number) => {
+  selected.value = index;
+}
 </script>
 
 <template>
@@ -23,15 +63,18 @@ const options = {
         </div>
         <div class="flex">
           <a href="mailto: elenaseeleyaz@gmail.com" class="icon">
-            <font-awesome-icon icon="fa-solid fa-envelope" beat size="2xl" />
+            <font-awesome-icon icon="fa-solid fa-envelope" size="2xl" />
           </a>
           <a href="https://www.linkedin.com/in/elenaseeley/" class="icon" target="_blank" rel="noopener noreferrer">
-            <font-awesome-icon icon="fa-brands fa-linkedin-in" beat size="2xl" />
+            <font-awesome-icon icon="fa-brands fa-linkedin-in" size="2xl" />
           </a>
           <a href="https://twitter.com/elena_seeley" class="icon" target="_blank" rel="noopener noreferrer">
-            <font-awesome-icon icon="fa-brands fa-twitter" beat size="2xl" />
+            <font-awesome-icon icon="fa-brands fa-twitter" size="2xl" />
           </a>
         </div>
+      </div>
+      <div class="absolute bottom-10 flex items-center justify-center w-full">
+        <font-awesome-icon :icon="['fas', 'chevron-down']" beat size="2xl" />
       </div>
     </div>
     <div class="fp-section about_me" data-anchor="about_me">
@@ -55,21 +98,26 @@ const options = {
       <div class="bg-gradient-to-b from-black to-green-900 absolute top-0 bottom-0 left-0 right-0 opacity-60 z-0"></div>
       <div class="z-10 absolute top-20 bottom-10 sm:left-10 left-4 sm:right-10 right-4">
           <h1>Skills and Experience</h1>
-          <div class="grid grid-cols-12">
-              <div class="col-span-4 flex flex-wrap gap-4">
-                  <img src="./assets/icons/asana.png" class="w-12 h-12" />
-                  <img src="./assets/icons/basecamp.png" class="w-12 h-12 rounded-full" />
-                  <img src="./assets/icons/canva.png" class="w-12 h-12" />
-                  <img src="./assets/icons/google.jpg" class="w-12 h-12 rounded-full" />
-                  <img src="./assets/icons/google-marketing.png" class="w-12 h-12 rounded-full" />
-                  <img src="./assets/icons/microsoft-suite.png" class="w-12 h-12 rounded-full" />
-                  <img src="./assets/icons/monday.png" class="w-12 h-12 rounded-full bg-gray-100" />
-                  <img src="./assets/icons/salesforce.jpg" class="w-12 h-12 rounded-full" />
-                  <img src="./assets/icons/slack.png" class="w-12 h-12 rounded-full" />
-
+          <div class="grid grid-cols-12 gap-4">
+              <div class="col-span-4 grid grid-cols-4 gap-4 skill-list">
+                  <img src="./assets/icons/asana.png" class="skill" />
+                  <img src="./assets/icons/basecamp.png" class="rounded-full skill" />
+                  <img src="./assets/icons/canva.png" class="skill" />
+                  <img src="./assets/icons/google.jpg" class="rounded-full skill" />
+                  <img src="./assets/icons/google-marketing.png" class="rounded-full skill" />
+                  <img src="./assets/icons/microsoft-suite.png" class="rounded-full skill" />
+                  <img src="./assets/icons/monday.png" class="rounded-full bg-gray-100 skill" />
+                  <img src="./assets/icons/salesforce.jpg" class="rounded-full skill" />
+                  <img src="./assets/icons/slack.png" class="rounded-full skill" />
               </div>
-              <div class="col-span-6"></div>
-              <Timeline class="col-span-2" :times="[{title: 'test', time: '2021'}, {title: 'test 2', time: '2022'}]" />
+              <div class="col-span-6 about py-2">
+                <div v-if="selected > -1">
+                  <ul>
+                    <li v-for="exp in experience[selected]">{{ exp }}</li>
+                  </ul>
+                </div>
+              </div>
+              <Timeline class="col-span-2" :times="time" @on-click="onTimelineHover" />
           </div>
       </div>
     </div>
@@ -83,8 +131,8 @@ const options = {
   background-size: cover;
 }
 .icon {
-  @apply rounded-full cursor-pointer;
-  padding: 2rem;
+  @apply rounded-full cursor-pointer hover:scale-125 transition-all duration-500;
+  padding: 1.5rem;
   margin-right: 1.5rem;
   border: solid 2px black;
 }
@@ -101,5 +149,15 @@ const options = {
   background-image: url("./assets/keyboard.png");
   background-repeat: no-repeat;
   background-size: cover;
+}
+ul {
+  list-style-type: circle !important;
+  padding-left: 1rem;
+}
+.skill {
+  @apply h-full w-full;
+}
+.skill-list {
+  max-height: 5rem;
 }
 </style>
