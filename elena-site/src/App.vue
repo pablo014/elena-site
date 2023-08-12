@@ -1,10 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import Timeline, { Times } from "./components/Timeline.vue";
-const options = {
-      menu: '#menu',
-      anchors: ['home', 'about_me'],
-};
 const selected = ref(-1);
 const experience: Array<Array<string>> = [
     [
@@ -45,13 +41,18 @@ const onTimelineHover = (time: Times, index: number) => {
     console.log(time)
   selected.value = index;
 }
+const smoothScroll = (className: string) => {
+    document.querySelector(className).scrollIntoView({
+        behavior: 'smooth'
+    });
+}
 </script>
 
 <template>
-  <div class="fixed w-screen top-0 z-40 h-12 p-2 bg-gray-700 text-lg sm:text-3xl">
-    <a class="p-2 m-2" href="#home">Home</a>
-    <a class="p-2 m-2" href="#about_me">About Me</a>
-    <a class="p-2 m-2" href="#exp">Skills and Experience</a>
+  <div class="fixed w-screen top-0 z-40 h-12 p-2 bg-gray-700 text-lg sm:text-3xl flex">
+    <p class="pb-4 px-2 m-2 cursor-pointer" @click="smoothScroll('.front')">Home</p>
+    <p class="pb-4 px-2 m-2 cursor-pointer" @click="smoothScroll('.about_me')">About Me</p>
+    <p class="pb-4 px-2 m-2 cursor-pointer" @click="smoothScroll('.exp')">Skills and Experience</p>
   </div>
   <div class="container">
     <div class="fp-section front" data-anchor="home">
@@ -73,11 +74,8 @@ const onTimelineHover = (time: Times, index: number) => {
           </a>
         </div>
       </div>
-      <div class="absolute bottom-10 flex items-center justify-center w-full">
-        <font-awesome-icon :icon="['fas', 'chevron-down']" beat size="2xl" />
-      </div>
     </div>
-    <div class="fp-section about_me" data-anchor="about_me">
+    <div class="fp-section about_me">
       <div class="bg-gradient-to-b from-black to-green-900 absolute top-0 bottom-0 left-0 right-0 opacity-60 z-0"></div>
       <div class="z-10 absolute top-20 bottom-20 sm:left-10 left-4 sm:right-10 right-4 grid grid-cols-3 gap-10">
         <div class="col-span-2 about">
@@ -94,7 +92,7 @@ const onTimelineHover = (time: Times, index: number) => {
         </div>
       </div>
     </div>
-    <div class="fp-section exp" data-anchor="exp">
+    <div class="fp-section exp">
       <div class="bg-gradient-to-b from-black to-green-900 absolute top-0 bottom-0 left-0 right-0 opacity-60 z-0"></div>
       <div class="z-10 absolute top-20 bottom-10 sm:left-10 left-4 sm:right-10 right-4">
           <h1>Skills and Experience</h1>
