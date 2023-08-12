@@ -42,9 +42,12 @@ const onTimelineHover = (time: Times, index: number) => {
   selected.value = index;
 }
 const smoothScroll = (className: string) => {
-    document.querySelector(className).scrollIntoView({
-        behavior: 'smooth'
-    });
+    const sect = document.querySelector(className);
+    if (sect) {
+        sect.scrollIntoView({
+            behavior: 'smooth'
+        });
+    }
 }
 </script>
 
