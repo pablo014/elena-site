@@ -29,15 +29,15 @@ const experience: Array<Array<string>> = [
 ]
 const time: Array<Times> = [
   {
-    title: 'Avani Media\n Client Success Coordinator',
+    title: 'Avani Media\nClient Success Coordinator',
     time: 'July 2022 - May 2023'
   },
   {
-    title: 'Soapbox Agency\n Project Manager',
+    title: 'Soapbox Agency\nProject Manager',
     time: 'March 2021 - December 2021'
   },
   {
-    title: 'WallsPop Marketing & Communications Group\n PR & Content Strategist',
+    title: 'WallsPop Marketing & Communications Group\nPR & Content Strategist',
     time: 'January 2020 - March 2022'
   },
 ]
@@ -79,7 +79,7 @@ const onTimelineHover = (time: Times, index: number) => {
     </div>
     <div class="fp-section about_me" data-anchor="about_me">
       <div class="bg-gradient-to-b from-black to-green-900 absolute top-0 bottom-0 left-0 right-0 opacity-60 z-0"></div>
-      <div class="z-10 absolute top-30 bottom-20 sm:left-10 left-4 sm:right-10 right-4 grid grid-cols-3 gap-10">
+      <div class="z-10 absolute top-20 bottom-20 sm:left-10 left-4 sm:right-10 right-4 grid grid-cols-3 gap-10">
         <div class="col-span-2 about">
           <h1>About Me</h1>
           <div>
@@ -88,9 +88,9 @@ const onTimelineHover = (time: Times, index: number) => {
           <div>
             I have demonstrated my skills in copywriting and project management by using tools such as Microsoft Office, Canva, WordPress, Google Suite, Asana, Trello, Basecamp, Monday, Salesforce, and Slack. I am optimistic, driven, and service-minded.</div>
         </div>
-        <div class="relative">
-          <div class="bg-black z-20 w-full h-full rounded-full opacity-30 absolute"></div>
-          <img src="./assets/elena-about.png" class="rounded-full bg-gradient-to-b from-green-900 to-amber-400 z-10">
+        <div class="relative flex items-center">
+          <div class="bg-black z-20 w-full h-60 rounded-full opacity-30 absolute"></div>
+          <img src="./assets/elena-about.png" class="h-60 w-full rounded-full bg-gradient-to-b from-green-900 to-amber-400 z-10">
         </div>
       </div>
     </div>
@@ -100,6 +100,7 @@ const onTimelineHover = (time: Times, index: number) => {
           <h1>Skills and Experience</h1>
           <div class="grid grid-cols-12 gap-4">
               <div class="col-span-4 grid grid-cols-4 gap-4 skill-list">
+                  <h2 class="col-span-4">Skills</h2>
                   <img src="./assets/icons/asana.png" class="skill" />
                   <img src="./assets/icons/basecamp.png" class="rounded-full skill" />
                   <img src="./assets/icons/canva.png" class="skill" />
@@ -110,14 +111,21 @@ const onTimelineHover = (time: Times, index: number) => {
                   <img src="./assets/icons/salesforce.jpg" class="rounded-full skill" />
                   <img src="./assets/icons/slack.png" class="rounded-full skill" />
               </div>
-              <div class="col-span-6 about py-2">
+              <div class="col-span-6 about py-2 overflow-y-scroll summary">
                 <div v-if="selected > -1">
+                    <h3>{{ time[selected].title }}</h3>
                   <ul>
-                    <li v-for="exp in experience[selected]">{{ exp }}</li>
+                    <li v-for="exp in experience[selected]">
+                        {{ exp }}
+                    </li>
                   </ul>
                 </div>
               </div>
-              <Timeline class="col-span-2" :times="time" @on-click="onTimelineHover" />
+              <Timeline class="col-span-2" :times="time" @on-click="onTimelineHover">
+                  <template #title>
+                      <div></div>
+                  </template>
+              </Timeline>
           </div>
       </div>
     </div>
@@ -159,5 +167,9 @@ ul {
 }
 .skill-list {
   max-height: 5rem;
+}
+.summary {
+    height: 60vh;
+    white-space: pre-wrap;
 }
 </style>
