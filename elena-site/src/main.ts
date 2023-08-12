@@ -15,6 +15,5 @@ import { fab } from '@fortawesome/free-brands-svg-icons'
 library.add(fas, far, fab)
 
 createApp(App)
-    .use(VueFullPage)
     .component('font-awesome-icon', FontAwesomeIcon)
     .mount('#app')
