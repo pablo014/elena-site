@@ -145,6 +145,7 @@ const smoothScroll = (className: string) => {
     scroll-snap-type: y mandatory;
 }
 .fp-section {
+    @apply relative;
     width: 100vw;
     height: 100vh;
     display: flex;
