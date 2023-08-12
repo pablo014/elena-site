@@ -91,7 +91,9 @@ const smoothScroll = (className: string) => {
         </div>
         <div class="relative flex items-center">
           <div class="bg-black z-20 w-full h-60 rounded-full opacity-30 absolute"></div>
-          <img src="./assets/elena-about.png" class="h-60 w-full rounded-full bg-gradient-to-b from-green-900 to-amber-400 z-10">
+            <div class="h-60 w-full rounded-full bg-gradient-to-b from-green-900 to-amber-400 z-10 flex items-center overflow-y-hidden">
+                <img src="./assets/elena-about.png" class="rounded-full object-contain">
+            </div>
         </div>
       </div>
     </div>
