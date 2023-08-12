@@ -173,6 +173,8 @@ const smoothScroll = (className: string) => {
 .about {
   @apply border-2 rounded-lg px-4;
   background: rgba(16, 16, 16, 0.8);
+    overflow-y: scroll;
+    height: 75vh;
 }
 .exp {
   background-image: url("./assets/keyboard.png");
