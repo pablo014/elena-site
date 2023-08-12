@@ -2,9 +2,6 @@ import { createApp } from 'vue'
 import './style.css'
 // @ts-ignore
 import App from './App.vue'
-import 'vue-fullpage.js/dist/style.css'
-// @ts-ignore
-import VueFullPage from 'vue-fullpage.js'
 /* import the fontawesome core */
 import { library } from '@fortawesome/fontawesome-svg-core'
 
