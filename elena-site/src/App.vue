@@ -48,12 +48,12 @@ const onTimelineHover = (time: Times, index: number) => {
 </script>
 
 <template>
-  <div class="w-screen absolute z-20 h-12 p-2 bg-gray-700 text-lg sm:text-3xl">
+  <div class="fixed w-screen top-0 z-40 h-12 p-2 bg-gray-700 text-lg sm:text-3xl">
     <a class="p-2 m-2" href="#home">Home</a>
     <a class="p-2 m-2" href="#about_me">About Me</a>
     <a class="p-2 m-2" href="#exp">Skills and Experience</a>
   </div>
-  <full-page :options="options">
+  <div class="container">
     <div class="fp-section front" data-anchor="home">
       <div class="bg-gradient-to-b from-black to-green-900 absolute top-0 bottom-0 left-0 right-0 opacity-60 z-0"></div>
       <div class="z-10 absolute top-40 bottom-10 sm:left-10 left-4 sm:right-10 right-4 flex flex-col justify-between">
@@ -129,10 +129,27 @@ const onTimelineHover = (time: Times, index: number) => {
           </div>
       </div>
     </div>
-  </full-page>
+  </div>
 </template>
 
 <style scoped>
+.container {
+    max-width: none !important;
+    overflow-x: hidden;
+    width: 100vw;
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+}
+.fp-section {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    scroll-snap-align: start;
+}
 .front {
   background-image: url("./assets/coffee.png");
   background-repeat: no-repeat;
