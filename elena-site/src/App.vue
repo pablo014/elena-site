@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { VueFlip } from 'vue-flip';
 import Timeline, { Times } from "./components/Timeline.vue";
 const options = {
       menu: '#menu',
@@ -43,6 +42,7 @@ const time: Array<Times> = [
 ]
 
 const onTimelineHover = (time: Times, index: number) => {
+    console.log(time)
   selected.value = index;
 }
 </script>

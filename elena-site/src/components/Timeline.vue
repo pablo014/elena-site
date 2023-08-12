@@ -14,7 +14,7 @@ const props = withDefaults(defineProps<Timeline>(), {
 
 <template>
 <div>
-    <div class="flex flex-col justify-center items-center" v-for="(time, index) in times">
+    <div class="flex flex-col justify-center items-center" v-for="(time, index) in props.times">
         <slot :name="time.title" :time="time">
           <div class="cursor-pointer" @hover="$emit('onHover', time, index)" @click="$emit('onClick', time, index)">
               <slot name="title" :title="time.title">
