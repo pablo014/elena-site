@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import Timeline, { Times } from "./components/Timeline.vue";
-// @ts-ignore
-import { VueFlip } from 'vue-flip';
+import FlipCard from "./components/FlipCard.vue";
 const selected = ref(0);
 const experience: Array<Array<string>> = [
     [
@@ -83,8 +82,8 @@ const smoothScroll = (className: string) => {
     </div>
     <div class="fp-section about_me">
       <div class="bg-gradient-to-b from-black to-green-900 absolute top-0 bottom-0 left-0 right-0 opacity-60 z-0"></div>
-        <div class="z-10 absolute top-20 bottom-20 sm:left-10 left-4 sm:right-10 right-4 block sm:hidden">
-            <vue-flip width="90vw" height="70vh" active-click>
+        <div class="z-10 absolute top-20 bottom-20 sm:left-10 left-4 sm:right-10 right-4 block">
+            <FlipCard>
                 <template v-slot:front>
                     <h1 class="text-center">About Me</h1>
                     <div class="relative flex items-center justify-center">
@@ -107,7 +106,7 @@ const smoothScroll = (className: string) => {
                             I have demonstrated my skills in copywriting and project management by using tools such as Microsoft Office, Canva, WordPress, Google Suite, Asana, Trello, Basecamp, Monday, Salesforce, and Slack. I am optimistic, driven, and service-minded.</div>
                     </div>
                 </template>
-            </vue-flip>
+            </FlipCard>
         </div>
       <div class="z-10 absolute top-20 bottom-20 sm:left-10 left-4 sm:right-10 right-4 sm:grid grid-cols-2 sm:grid-cols-3 gap-10 hidden">
         <div class="col-span-2 about">
@@ -134,7 +133,7 @@ const smoothScroll = (className: string) => {
                     <div></div>
                 </template>
             </Timeline>
-            <vue-flip width="90vw" height="70vh" active-click>
+            <FlipCard>
                 <template #back>
                     <div class="grid grid-cols-4 gap-4 skill-list">
                         <h2 class="col-span-4">Skills</h2>
@@ -167,7 +166,7 @@ const smoothScroll = (className: string) => {
                         <font-awesome-icon icon="fa-rotate" flip size="xl"/>
                     </div>
                 </template>
-            </vue-flip>
+            </FlipCard>
         </div>
       <div class="z-10 absolute top-20 bottom-10 sm:left-10 left-4 sm:right-10 right-4 sm:block hidden">
           <h1>Skills and Experience</h1>
@@ -208,7 +207,6 @@ const smoothScroll = (className: string) => {
 <style scoped>
 .container {
     max-width: none !important;
-    overflow-x: hidden;
     width: 100vw;
     height: 100vh;
     overflow-y: scroll;
