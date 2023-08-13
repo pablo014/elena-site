@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import Timeline, { Times } from "./components/Timeline.vue";
+// @ts-ignore
+import { VueFlip } from 'vue-flip';
 const selected = ref(-1);
 const experience: Array<Array<string>> = [
     [
@@ -52,20 +54,21 @@ const smoothScroll = (className: string) => {
 </script>
 
 <template>
-  <div class="fixed w-screen top-0 z-40 h-12 p-2 bg-gray-700 text-lg sm:text-3xl flex">
-    <p class="pb-4 px-2 m-2 cursor-pointer" @click="smoothScroll('.front')">Home</p>
-    <p class="pb-4 px-2 m-2 cursor-pointer" @click="smoothScroll('.about_me')">About Me</p>
-    <p class="pb-4 px-2 m-2 cursor-pointer" @click="smoothScroll('.exp')">Skills and Experience</p>
+  <div class="fixed w-screen top-0 z-40 h-12 bg-gray-700 text-lg sm:text-3xl text-xs flex items-center">
+      <img src="./assets/icons/Elena.png" class="h-12 sm:block hidden"/>
+    <p class="p-2 m-2 cursor-pointer" @click="smoothScroll('.front')">Home</p>
+    <p class="p-2 m-2 cursor-pointer" @click="smoothScroll('.about_me')">About Me</p>
+    <p class="p-2 m-2 cursor-pointer" @click="smoothScroll('.exp')">Skills and Experience</p>
   </div>
   <div class="container">
     <div class="fp-section front" data-anchor="home">
       <div class="bg-gradient-to-b from-black to-green-900 absolute top-0 bottom-0 left-0 right-0 opacity-60 z-0"></div>
-      <div class="z-10 absolute top-40 bottom-10 sm:left-10 left-4 sm:right-10 right-4 flex flex-col justify-between">
+      <div class="z-10 absolute sm:top-40 sm:bottom-10 sm:left-10 left-4 sm:right-10 right-4 flex flex-col justify-between">
         <div>
           <h1>Elena Seeley</h1>
           <h2>Project Manager</h2>
         </div>
-        <div class="flex">
+        <div class="flex flex-wrap gap-3">
           <a href="mailto: elenaseeleyaz@gmail.com" class="icon">
             <font-awesome-icon icon="fa-solid fa-envelope" size="2xl" />
           </a>
@@ -80,7 +83,31 @@ const smoothScroll = (className: string) => {
     </div>
     <div class="fp-section about_me">
       <div class="bg-gradient-to-b from-black to-green-900 absolute top-0 bottom-0 left-0 right-0 opacity-60 z-0"></div>
-      <div class="z-10 absolute top-20 bottom-20 sm:left-10 left-4 sm:right-10 right-4 grid grid-cols-3 gap-10">
+        <vue-flip class="z-10 absolute top-20 bottom-20 sm:left-10 left-4 sm:right-10 right-4 block sm:hidden" active-click>
+            <template v-slot:front>
+                <h1 class="text-center">About Me</h1>
+                <div class="relative flex items-center justify-center">
+                    <div class="bg-black z-20 w-full h-64 rounded-full opacity-30 absolute"></div>
+                    <div class="h-64 w-full rounded-full bg-gradient-to-b from-green-900 to-amber-400 z-10 flex items-center overflow-y-hidden">
+                        <img src="./assets/elena-about.png" class="rounded-full object-contain">
+                    </div>
+                </div>
+                <div class="flex items-center justify-center mt-2">
+                    <font-awesome-icon icon="fa-rotate" flip size="xl"/>
+                </div>
+            </template>
+            <template v-slot:back>
+                <div class="about">
+                    <h1>About Me</h1>
+                    <div>
+                        As a Brigham Young University - Idaho graduate with a bachelor's degree in communication, I am passionate about developing and maintaining solid relationships with clients and delivering on their objectives. I have gained valuable experience in client success coordination, PR and content strategy, and project management in various settings, including B2B media, marketing and communications, and creative agencies.
+                    </div>
+                    <div>
+                        I have demonstrated my skills in copywriting and project management by using tools such as Microsoft Office, Canva, WordPress, Google Suite, Asana, Trello, Basecamp, Monday, Salesforce, and Slack. I am optimistic, driven, and service-minded.</div>
+                </div>
+            </template>
+        </vue-flip>
+      <div class="z-10 absolute top-20 bottom-20 sm:left-10 left-4 sm:right-10 right-4 sm:grid grid-cols-2 sm:grid-cols-3 gap-10 hidden">
         <div class="col-span-2 about">
           <h1>About Me</h1>
           <div>
@@ -89,7 +116,7 @@ const smoothScroll = (className: string) => {
           <div>
             I have demonstrated my skills in copywriting and project management by using tools such as Microsoft Office, Canva, WordPress, Google Suite, Asana, Trello, Basecamp, Monday, Salesforce, and Slack. I am optimistic, driven, and service-minded.</div>
         </div>
-        <div class="relative flex items-center">
+        <div class="relative flex items-center col-span-2 sm:col-span-1">
           <div class="bg-black z-20 w-full h-60 rounded-full opacity-30 absolute"></div>
             <div class="h-60 w-full rounded-full bg-gradient-to-b from-green-900 to-amber-400 z-10 flex items-center overflow-y-hidden">
                 <img src="./assets/elena-about.png" class="rounded-full object-contain">
@@ -99,7 +126,48 @@ const smoothScroll = (className: string) => {
     </div>
     <div class="fp-section exp">
       <div class="bg-gradient-to-b from-black to-green-900 absolute top-0 bottom-0 left-0 right-0 opacity-60 z-0"></div>
-      <div class="z-10 absolute top-20 bottom-10 sm:left-10 left-4 sm:right-10 right-4">
+        <div class="block sm:hidden z-10 absolute top-20 bottom-10 left-4 right-4">
+            <Timeline class="text-sm" :times="time" @on-click="onTimelineHover">
+                <template #title>
+                    <div></div>
+                </template>
+            </Timeline>
+            <vue-flip active-click>
+                <template #back>
+                    <div class="grid grid-cols-4 gap-4 skill-list">
+                        <h2 class="col-span-4">Skills</h2>
+                        <img src="./assets/icons/asana.png" class="skill" />
+                        <img src="./assets/icons/basecamp.png" class="rounded-full skill" />
+                        <img src="./assets/icons/canva.png" class="skill" />
+                        <img src="./assets/icons/google.jpg" class="rounded-full skill" />
+                        <img src="./assets/icons/google-marketing.png" class="rounded-full skill" />
+                        <img src="./assets/icons/microsoft-suite.png" class="rounded-full skill" />
+                        <img src="./assets/icons/monday.png" class="rounded-full bg-gray-100 skill" />
+                        <img src="./assets/icons/salesforce.jpg" class="rounded-full skill" />
+                        <img src="./assets/icons/slack.png" class="rounded-full skill" />
+                        <div class="flex items-center justify-center mt-2 col-span-4">
+                            <font-awesome-icon icon="fa-rotate" flip size="xl"/>
+                        </div>
+                    </div>
+                </template>
+                <template #front>
+                        <div class="about py-2 overflow-y-scroll summary">
+                            <div v-if="selected > -1">
+                                <h3>{{ time[selected].title }}</h3>
+                                <ul>
+                                    <li v-for="exp in experience[selected]">
+                                        {{ exp }}
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    <div class="flex items-center justify-center mt-2">
+                        <font-awesome-icon icon="fa-rotate" flip size="xl"/>
+                    </div>
+                </template>
+            </vue-flip>
+        </div>
+      <div class="z-10 absolute top-20 bottom-10 sm:left-10 left-4 sm:right-10 right-4 sm:block hidden">
           <h1>Skills and Experience</h1>
           <div class="grid grid-cols-12 gap-4">
               <div class="col-span-4 grid grid-cols-4 gap-4 skill-list">
@@ -162,8 +230,10 @@ const smoothScroll = (className: string) => {
 .icon {
   @apply rounded-full cursor-pointer hover:scale-125 transition-all duration-500;
   padding: 1.5rem;
-  margin-right: 1.5rem;
   border: solid 2px black;
+    @media only screen and (max-width: 600px) {
+        padding: .6rem;
+    }
 }
 .about_me {
   background-image: url("./assets/office.png");

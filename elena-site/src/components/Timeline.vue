@@ -34,6 +34,9 @@ const props = withDefaults(defineProps<Timeline>(), {
 .vertical {
     border-left: 6px solid black;
     height: 1.5rem;
+    @media only screen and (max-width: 600px) {
+        height: 0;
+    }
 }
 p {
   white-space: pre-wrap;
