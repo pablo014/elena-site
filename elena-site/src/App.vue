@@ -82,7 +82,7 @@ const smoothScroll = (className: string) => {
     </div>
     <div class="fp-section about_me">
       <div class="bg-gradient-to-b from-black to-green-900 absolute top-0 bottom-0 left-0 right-0 opacity-60 z-0"></div>
-        <div class="z-10 absolute top-20 bottom-20 sm:left-10 left-4 sm:right-10 right-4 block">
+        <div class="z-10 absolute top-20 bottom-20 sm:left-10 left-4 sm:right-10 right-4 sm:hidden block">
             <FlipCard>
                 <template v-slot:front>
                     <h1 class="text-center">About Me</h1>
