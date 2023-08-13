@@ -3,7 +3,7 @@ import { ref } from 'vue';
 import Timeline, { Times } from "./components/Timeline.vue";
 // @ts-ignore
 import { VueFlip } from 'vue-flip';
-const selected = ref(-1);
+const selected = ref(0);
 const experience: Array<Array<string>> = [
     [
         'Served as the primary point of contact for B2B clients by managing communication and delivering on client objectives',
@@ -83,30 +83,32 @@ const smoothScroll = (className: string) => {
     </div>
     <div class="fp-section about_me">
       <div class="bg-gradient-to-b from-black to-green-900 absolute top-0 bottom-0 left-0 right-0 opacity-60 z-0"></div>
-        <vue-flip class="z-10 absolute top-20 bottom-20 sm:left-10 left-4 sm:right-10 right-4 block sm:hidden" active-click>
-            <template v-slot:front>
-                <h1 class="text-center">About Me</h1>
-                <div class="relative flex items-center justify-center">
-                    <div class="bg-black z-20 w-full h-64 rounded-full opacity-30 absolute"></div>
-                    <div class="h-64 w-full rounded-full bg-gradient-to-b from-green-900 to-amber-400 z-10 flex items-center overflow-y-hidden">
-                        <img src="./assets/elena-about.png" class="rounded-full object-contain">
+        <div class="z-10 absolute top-20 bottom-20 sm:left-10 left-4 sm:right-10 right-4 block sm:hidden">
+            <vue-flip width="90vw" height="70vh" active-click>
+                <template v-slot:front>
+                    <h1 class="text-center">About Me</h1>
+                    <div class="relative flex items-center justify-center">
+                        <div class="bg-black z-20 w-full h-64 rounded-full opacity-30 absolute"></div>
+                        <div class="h-64 w-full rounded-full bg-gradient-to-b from-green-900 to-amber-400 z-10 flex items-center overflow-y-hidden">
+                            <img src="./assets/elena-about.png" class="rounded-full object-contain">
+                        </div>
                     </div>
-                </div>
-                <div class="flex items-center justify-center mt-2">
-                    <font-awesome-icon icon="fa-rotate" flip size="xl"/>
-                </div>
-            </template>
-            <template v-slot:back>
-                <div class="about">
-                    <h1>About Me</h1>
-                    <div>
-                        As a Brigham Young University - Idaho graduate with a bachelor's degree in communication, I am passionate about developing and maintaining solid relationships with clients and delivering on their objectives. I have gained valuable experience in client success coordination, PR and content strategy, and project management in various settings, including B2B media, marketing and communications, and creative agencies.
+                    <div class="flex items-center justify-center mt-2">
+                        <font-awesome-icon icon="fa-rotate" flip size="xl"/>
                     </div>
-                    <div>
-                        I have demonstrated my skills in copywriting and project management by using tools such as Microsoft Office, Canva, WordPress, Google Suite, Asana, Trello, Basecamp, Monday, Salesforce, and Slack. I am optimistic, driven, and service-minded.</div>
-                </div>
-            </template>
-        </vue-flip>
+                </template>
+                <template v-slot:back>
+                    <div class="about">
+                        <h1>About Me</h1>
+                        <div>
+                            As a Brigham Young University - Idaho graduate with a bachelor's degree in communication, I am passionate about developing and maintaining solid relationships with clients and delivering on their objectives. I have gained valuable experience in client success coordination, PR and content strategy, and project management in various settings, including B2B media, marketing and communications, and creative agencies.
+                        </div>
+                        <div>
+                            I have demonstrated my skills in copywriting and project management by using tools such as Microsoft Office, Canva, WordPress, Google Suite, Asana, Trello, Basecamp, Monday, Salesforce, and Slack. I am optimistic, driven, and service-minded.</div>
+                    </div>
+                </template>
+            </vue-flip>
+        </div>
       <div class="z-10 absolute top-20 bottom-20 sm:left-10 left-4 sm:right-10 right-4 sm:grid grid-cols-2 sm:grid-cols-3 gap-10 hidden">
         <div class="col-span-2 about">
           <h1>About Me</h1>
@@ -132,7 +134,7 @@ const smoothScroll = (className: string) => {
                     <div></div>
                 </template>
             </Timeline>
-            <vue-flip active-click>
+            <vue-flip width="90vw" height="70vh" active-click>
                 <template #back>
                     <div class="grid grid-cols-4 gap-4 skill-list">
                         <h2 class="col-span-4">Skills</h2>
