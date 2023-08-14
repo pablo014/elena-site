@@ -54,7 +54,7 @@ const showTimeline = ref(true);
 </script>
 
 <template>
-  <div class="fixed w-screen top-0 z-40 h-12 bg-gray-700 text-lg sm:text-3xl text-xs flex items-center">
+  <div class="header">
       <img src="./assets/icons/Elena.png" class="h-12 sm:block hidden"/>
     <p class="p-2 m-2 cursor-pointer" @click="smoothScroll('.front')">Home</p>
     <p class="p-2 m-2 cursor-pointer" @click="smoothScroll('.about_me')">About Me</p>
@@ -209,6 +209,9 @@ const showTimeline = ref(true);
 </template>
 
 <style scoped>
+.header {
+    @apply fixed w-screen top-0 z-40 h-12 bg-gradient-to-tr from-black from-5% to-gray-700 to-90% text-lg sm:text-3xl text-xs flex items-center;
+}
 .container {
     max-width: none !important;
     width: 100vw;
@@ -232,9 +235,9 @@ const showTimeline = ref(true);
   background-size: cover;
 }
 .icon {
-  @apply rounded-full cursor-pointer hover:scale-125 transition-all duration-500;
+  @apply rounded-full cursor-pointer hover:scale-125 transition-all duration-500 bg-gradient-to-tr from-black from-5% to-gray-700 to-90%;
   padding: 1.5rem;
-  border: solid 2px black;
+  border: solid 1px gray;
     @media only screen and (max-width: 600px) {
         padding: .6rem;
     }
