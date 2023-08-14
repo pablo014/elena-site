@@ -20,7 +20,7 @@ const props = withDefaults(defineProps<Timeline>(), {
               <slot name="title" :title="time.title">
                   <p>{{time.title}}</p>
               </slot>
-              <slot name="time" :time="time.time">
+              <slot name="time" :time="time.time" :index="index">
                   <p>{{time.time}}</p>
               </slot>
           </div>
@@ -35,8 +35,7 @@ const props = withDefaults(defineProps<Timeline>(), {
     border-left: 6px solid black;
     height: 1.5rem;
     @media only screen and (max-width: 600px) {
-        height: .2rem;
-        width: 20px;
+        height: 0;
     }
 }
 p {

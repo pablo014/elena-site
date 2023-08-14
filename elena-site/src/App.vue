@@ -50,6 +50,7 @@ const smoothScroll = (className: string) => {
         });
     }
 }
+const showTimeline = ref(true);
 </script>
 
 <template>
@@ -128,12 +129,15 @@ const smoothScroll = (className: string) => {
     <div class="fp-section exp">
       <div class="bg-gradient-to-b from-black to-green-900 absolute top-0 bottom-0 left-0 right-0 opacity-60 z-0"></div>
         <div class="block sm:hidden z-10 absolute top-20 bottom-10 left-4 right-4">
-            <Timeline class="text-sm" :times="time" @on-click="onTimelineHover">
+            <Timeline v-show="showTimeline" class="text-sm mb-2" :times="time" @on-click="onTimelineHover">
                 <template #title>
                     <div></div>
                 </template>
+                <template #time="{time, index}">
+                    <div :class="index === selected ? 'chip-selected' : 'chip'">{{ time }}</div>
+                </template>
             </Timeline>
-            <FlipCard>
+            <FlipCard @toggleSide="showTimeline = !showTimeline">
                 <template #back>
                     <div class="grid grid-cols-4 gap-4 skill-list">
                         <h2 class="col-span-4">Skills</h2>
@@ -264,5 +268,15 @@ ul {
 .summary {
     height: 60vh;
     white-space: pre-wrap;
+}
+.chip {
+    @apply border-2 rounded-full text-center;
+    width: 12rem;
+    background: rgba(16, 16, 16, 0.8);
+}
+.chip-selected {
+    @apply border-2 rounded-full text-center;
+    width: 12rem;
+    background: rgba(56, 54, 54, 0.8);
 }
 </style>

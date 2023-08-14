@@ -1,16 +1,24 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 const isFront = ref(true);
+
+const emits = defineEmits<{
+    (e: 'toggleSide', isFront: boolean): void
+}>()
+const toggle = () => {
+    isFront.value = !isFront.value
+    emits('toggleSide', isFront.value);
+}
 </script>
 <template>
     <div class="btn-container">
         <Transition name="slide-up">
             <div v-if="isFront"
-                    @click="isFront = !isFront">
+                    @click="toggle">
                 <slot name="front"></slot>
             </div>
             <div v-else
-                    @click="isFront = !isFront">
+                    @click="toggle">
                 <slot name="back"></slot>
             </div>
         </Transition>
